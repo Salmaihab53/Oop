@@ -5,86 +5,111 @@ using System;
 
 public class Employee
 {
-    // Attributes
-    public string firstName;
-    public string LastName;
-    public int age;
-    public string jobTitle;
-    public double salary;
-    public bool isFullTime;
-    public string department;
-    public string email;
+    private string firstName;
+    private string lastName;
+    private string[] skills;
+    private string position;
+    private decimal salary;
+    private DateTime hireDate;
+    private string phoneNumber;
+    private string email;
 
-    // Constructors
-    public Employee(string firstName, string lastName, int age, string jobTitle, double salary, bool isFullTime, string department, string email)
+    public Employee()
+    {
+        firstName = "John";
+        lastName = "Doe";
+        skills = new string[] { "Unknown" };
+        position = "Unknown";
+        salary = 0;
+        hireDate = DateTime.Now;
+        phoneNumber = "Unknown";
+        email = "Unknown";
+    }
+
+    public Employee(string firstName, string lastName, string[] skills, string position, decimal salary, DateTime hireDate, string phoneNumber, string email)
     {
         this.firstName = firstName;
-        this.LastName = lastName;
-        this.age = age;
-        this.jobTitle = jobTitle;
+        this.lastName = lastName;
+        this.skills = skills;
+        this.position = position;
         this.salary = salary;
-        this.isFullTime = isFullTime;
-        this.department = department;
+        this.hireDate = hireDate;
+        this.phoneNumber = phoneNumber;
         this.email = email;
     }
 
-    public Employee(string firstName, string lastName, int age, string jobTitle, double salary, bool isFullTime)
-        : this(firstName, lastName, age, jobTitle, salary, isFullTime, "", "")
+    public Employee(string firstName, string lastName, string[] skills, string position, decimal salary)
     {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.skills = skills;
+        this.position = position;
+        this.salary = salary;
+        this.hireDate = DateTime.Now;
+        this.phoneNumber = "Unknown";
+        this.email = "Unknown";
     }
 
-    public Employee(string firstName, string lastName, int age, string jobTitle, double salary)
-        : this(firstName, lastName, age, jobTitle, salary, true, "", "")
+    public Employee(string firstName, string lastName, string position, decimal salary)
     {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.skills = new string[] { "Unknown" };
+        this.position = position;
+        this.salary = salary;
+        this.hireDate = DateTime.Now;
+        this.phoneNumber = "Unknown";
+        this.email = "Unknown";
     }
 
-    public Employee(string firstName, string lastName, int age, string jobTitle)
-        : this(firstName, lastName, age, jobTitle, 0, true, "", "")
+    public Employee(string firstName, string lastName)
     {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.skills = new string[] { "Unknown" };
+        this.position = "Unknown";
+        this.salary = 0;
+        this.hireDate = DateTime.Now;
+        this.phoneNumber = "Unknown";
+        this.email = "Unknown";
     }
 
-    public Employee(string firstName, string lastName, int age)
-        : this(firstName, lastName, age, "", 0, true, "", "")
+    public void UpdateSkills(string[] newSkills)
     {
+        skills = newSkills;
     }
 
-    // Methods
     public string GetFullName()
     {
-        return this.firstName + " " + this.LastName;
+        return firstName + " " + lastName;
     }
 
-    public double GetAnnualSalary()
+    public decimal GetSalary()
     {
-        return this.salary * 12;
+        return salary;
     }
 
-    public void IncreaseSalary(double percent)
+    public void SetSalary(decimal newSalary)
     {
-        this.salary *= (1 + percent / 100);
+        salary = newSalary;
     }
 
-    public void ChangeJobTitle(string newJobTitle)
+    public DateTime GetHireDate()
     {
-        this.jobTitle = newJobTitle;
+        return hireDate;
     }
 
-    public void ChangeDepartment(string newDepartment)
+    public string[] GetSkills()
     {
-        this.department = newDepartment;
+        return skills;
     }
 
-    public void PrintEmployeeInfo()
+    public void SetSkills(string[] newSkills)
     {
-        Console.WriteLine("Employee Name: " + GetFullName());
-        Console.WriteLine("Age: " + this.age);
-        Console.WriteLine("Job Title: " + this.jobTitle);
-        Console.WriteLine("Salary: " + this.salary);
-        Console.WriteLine("Is Full Time: " + this.isFullTime);
-        Console.WriteLine("Department: " + this.department);
-        Console.WriteLine("Email: " + this.email);
+        skills = newSkills;
     }
 }
+
 
 
 
